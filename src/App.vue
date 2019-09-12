@@ -1,31 +1,45 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <md-toolbar color="primary" class="expanded-toolbar">
+      <span class="branding">
+        <md-button>
+          <router-link to="/">{{ title }}</router-link>
+        </md-button>
+        <md-button>
+          <router-link to="/"><md-icon>home</md-icon></router-link>
+        </md-button>
+      </span>
+      <md-menu md-direction="bottom-start">
+        <md-button md-menu-trigger><md-icon>menu</md-icon></md-button>
+        <md-menu-content>
+          <md-menu-item><router-link to="/">Home</router-link></md-menu-item>
+          <md-menu-item><router-link to="/search">Search</router-link></md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-toolbar>
     <router-view />
   </div>
 </template>
 
+<script lang="ts">
+import Vue from "vue";
+
+export default class App extends Vue {
+  title = "EIMS";
+}
+</script>
+
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.branding {
+  flex: 1;
+  text-align: left;
+}
+
+h1 {
   text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
